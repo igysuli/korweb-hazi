@@ -2,7 +2,7 @@
 
 module.exports = function(life) {
     
-    var life = life;
+    var life = parseInt(life) > 30 ? 30 : parseInt(life);
     
     this.getLife = function(){
         return life;

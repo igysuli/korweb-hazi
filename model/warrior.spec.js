@@ -10,6 +10,11 @@ describe('Warrior', function() {
             expect(warrior.getLife()).to.eql(20);
         });
         
+        it('creating the warrior with number will return 30 if the number is higher than 30', function() {
+            var warrior = new Warrior(40);
+            expect(warrior.getLife()).to.eql(30);
+        });
+        
     });
 
 });
