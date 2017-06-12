@@ -9,4 +9,12 @@ Warrior.prototype.getLife = function () {
     return this._life;
 };
 
+Warrior.prototype.attack = function (anotherWarrior) {
+    anotherWarrior.decreaseLifeByOne();
+};
+
+Warrior.prototype.decreaseLifeByOne = function (anotherWarrior) {
+    this._life--;
+};
+
 module.exports = Warrior;
