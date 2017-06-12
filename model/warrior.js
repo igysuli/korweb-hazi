@@ -1,20 +1,20 @@
 'use strict';
 
-function Warrior(life)
+function Warrior(hp)
 {
-    this._life = parseInt(life) > 30 ? 30 : parseInt(life);
+    this._hp = parseInt(hp) > 30 ? 30 : parseInt(hp);
 }
 
-Warrior.prototype.getLife = function () {
-    return this._life;
+Warrior.prototype.getHP = function () {
+    return this._hp;
 };
 
 Warrior.prototype.attack = function (anotherWarrior) {
-    anotherWarrior.decreaseLifeByOne();
+    anotherWarrior.decreaseHPByOne();
 };
 
-Warrior.prototype.decreaseLifeByOne = function (anotherWarrior) {
-    this._life--;
+Warrior.prototype.decreaseHPByOne = function (anotherWarrior) {
+    this._hp--;
 };
 
 module.exports = Warrior;
