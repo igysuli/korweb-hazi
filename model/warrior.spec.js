@@ -125,25 +125,30 @@ describe('Warrior', function() {
         
         it('not setting a weapon will leave the warrior with barehand', function() {
             var jon = new Warrior(30);
-            var theon = new Warrior(20);
 
             expect(jon._weapon).to.eql('barehand');
         });
         
         it('setting an existing weapon will give it to the warrior', function() {
             var jon = new Warrior(30);
-            var theon = new Warrior(20);
             jon.setWeapon('sword');
 
             expect(jon._weapon).to.eql('sword');
         });
         
-        it('setting a not-existing weapon will leave the warrior with barehand', function() {
+        it('setting a not-existing weapon will leave the warrior with barehand if there was no previous weapons', function() {
             var jon = new Warrior(30);
-            var theon = new Warrior(20);
             jon.setWeapon('tiger');
 
             expect(jon._weapon).to.eql('barehand');
+        });
+        
+        it('setting a not-existing weapon will leave the warrior with its previous weapon', function() {
+            var jon = new Warrior(30);
+            jon.setWeapon('sword');
+            jon.setWeapon('tiger');
+
+            expect(jon._weapon).to.eql('sword');
         });
         
     });    
