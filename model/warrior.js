@@ -1,8 +1,11 @@
 'use strict';
 
+var Weapons = require('./weapons.js');
+
 function Warrior(hp)
 {
     this._hp = parseInt(hp) > 30 ? 30 : parseInt(hp);
+    this._weapon = 'barehand';
 }
 
 Warrior.prototype = {
@@ -12,11 +15,17 @@ Warrior.prototype = {
     },
     
     attack: function(anotherWarrior) {
-        anotherWarrior.decreaseHPByOne();
+        anotherWarrior.attackedBy(this._weapon);
     },
     
-    decreaseHPByOne: function() {
-        this._hp--;
+    attackedBy: function(weapon) {
+        this._hp -= Weapons[weapon];
+    },
+    
+    setWeapon: function(weapon) {
+        if (Weapons[weapon] != undefined) {
+            this._weapon = weapon;
+        }
     }
 };
 
