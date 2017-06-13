@@ -15,7 +15,7 @@ Battle.prototype = {
                 this._warrior1.attackedBy(this._warrior2.getWeapon());
             }
         }
-        return this._warrior1.getHP() > 0 ? 0 : 1;
+        return this._warrior1.getHP() > 0 ? this._warrior1 : this._warrior2;
     }
 };
 

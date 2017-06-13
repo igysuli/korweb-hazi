@@ -14,7 +14,7 @@ describe('Battle', function() {
             
             var battle = new Battle(warrior1, warrior2);
             
-            expect(battle.getWinner()).to.eql(0);
+            expect(battle.getWinner()).to.eql(warrior1);
         });
         
         it('given two warriors, if the first has more hp, the first one wins', function() {
@@ -23,7 +23,7 @@ describe('Battle', function() {
             
             var battle = new Battle(warrior1, warrior2);
             
-            expect(battle.getWinner()).to.eql(0);
+            expect(battle.getWinner()).to.eql(warrior1);
         });
         
         it('given two warriors, if the second has more hp, the second one wins', function() {
@@ -32,7 +32,7 @@ describe('Battle', function() {
             
             var battle = new Battle(warrior1, warrior2);
             
-            expect(battle.getWinner()).to.eql(1);
+            expect(battle.getWinner()).to.eql(warrior2);
         });
         
     });

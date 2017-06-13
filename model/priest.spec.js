@@ -42,7 +42,7 @@ describe('Priest', function() {
             
             var battle = new Battle(warrior, priest);
             
-            expect(battle.getWinner()).to.eql(1);
+            expect(battle.getWinner()).to.eql(priest);
         });
         
     });
