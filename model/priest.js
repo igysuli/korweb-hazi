@@ -11,8 +11,15 @@ Priest.super_ = Warrior;
 
 Priest.prototype = Object.create(Warrior.prototype);
 
-Priest.prototype.attackedBy = function(weapon) {
-    this._hp -= (1 - Weapons[weapon].attack - Weapons[this._weapon].defense);
+Priest.prototype.heal = function() {
+    if (this._hp < this._originalHP) {
+        this._hp++;
+    }
+};
+
+Priest.prototype.attack = function(anotherWarrior) {
+    this.heal();
+    anotherWarrior.attackedBy(this._weapon);
 };
 
 module.exports = Priest;

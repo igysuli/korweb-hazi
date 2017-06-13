@@ -5,6 +5,7 @@ var Weapons = require('./weapons.js');
 function Warrior(hp)
 {
     this._hp = parseInt(hp) > 30 ? 30 : parseInt(hp);
+    this._originalHP = this._hp;
     this._weapon = 'barehand';
 }
 

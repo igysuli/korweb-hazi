@@ -25,18 +25,28 @@ var expect = require('chai').expect;
 
 describe('Priest', function() {
 
-    describe('#attackedBy', function() {
+    describe('#attack', function() {
         
-        it('creating a warrior against a priest, the priest heals itself before it\'s attacked', function() {
+        it('creating a warrior against a priest, the priest heals itself before it attacks', function() {
             var warrior = new Warrior(10);
             var priest = new Priest(5);
             
-            priest.attackedBy(warrior.getWeapon());
+            warrior.attack(priest);
+            expect(priest.getHP()).to.eql(4);
             
+            priest.attack(warrior);
             expect(priest.getHP()).to.eql(5);
         });
         
-        it('creating a warrior against a priest in a battle, the priest heals itself before each time it\'s attacked', function() {
+        it('creating a warrior against a priest, the priest heals itself before it attacks but not above its original hp', function() {
+            var warrior = new Warrior(10);
+            var priest = new Priest(5);
+            
+            priest.attack(warrior);
+            expect(priest.getHP()).to.eql(5);
+        });
+        
+        it('creating a warrior against a priest in a battle, the priest heals itself before each time it attacks', function() {
             var warrior = new Warrior(10);
             var priest = new Priest(5);
             
