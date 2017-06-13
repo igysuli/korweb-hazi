@@ -19,7 +19,16 @@ Warriors.prototype = {
     },
     
     getWarriors: function() {
-        return this._warriors;
+        var output = [];
+        for (var i in this._warriors) {
+            output.push({
+                id: this._warriors[i].id,
+                type: this._warriors[i].type,
+                hp: this._warriors[i].warrior.getHP(),
+                weapon: this._warriors[i].warrior.getWeapon()
+            });
+        }
+        return output;
     },
     
     createWarrior: function(type, hp, weapon) {

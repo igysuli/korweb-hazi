@@ -21,11 +21,8 @@ describe('Warriors', function() {
                 {
                     'id': 1,
                     'type': 'priest',
-                    'warrior': {
-                        '_hp': 30,
-                        '_originalHP': 30,
-                        '_weapon': 'magic_stick'
-                    }
+                    'hp': 30,
+                    'weapon': 'magic_stick'
                 }
             ]));
         });
@@ -39,20 +36,14 @@ describe('Warriors', function() {
                 {
                     'id': 1,
                     'type': 'priest',
-                    'warrior': {
-                        '_hp': 30,
-                        '_originalHP': 30,
-                        '_weapon': 'magic_stick'
-                    }
+                    'hp': 30,
+                    'weapon': 'magic_stick'
                 },
                 {
                     'id': 2,
                     'type': 'warrior',
-                    'warrior': {
-                        '_hp': 10,
-                        '_originalHP': 10,
-                        '_weapon': 'barehand'
-                    }
+                    'hp': 10,
+                    'weapon': 'barehand'
                 }
             ]));
         });
