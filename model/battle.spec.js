@@ -1,3 +1,5 @@
+'use strict';
+
 var Warrior = require('./warrior.js');
 var Battle = require('./battle.js');
 var expect = require('chai').expect;

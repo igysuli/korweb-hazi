@@ -1,3 +1,5 @@
+'use strict';
+
 var Weapons = {
     'barehand': {
         'attack': 1,

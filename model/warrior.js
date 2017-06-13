@@ -14,6 +14,10 @@ Warrior.prototype = {
         return this._hp;
     },
     
+    getWeapon: function() {
+        return this._weapon;
+    },
+    
     attack: function(anotherWarrior) {
         anotherWarrior.attackedBy(this._weapon);
     },

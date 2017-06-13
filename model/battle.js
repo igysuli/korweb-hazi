@@ -9,7 +9,13 @@ function Battle(warrior1, warrior2)
 Battle.prototype = {
     
     getWinner: function() {
-        return this._warrior1.getHP() >= this._warrior2.getHP() ? 0 : 1;
+        while (this._warrior1.getHP() > 0 && this._warrior2.getHP() > 0) {
+            this._warrior2.attackedBy(this._warrior1.getWeapon());
+            if (this._warrior2.getHP() > 0) {
+                this._warrior1.attackedBy(this._warrior2.getWeapon());
+            }
+        }
+        return this._warrior1.getHP() > 0 ? 0 : 1;
     }
 };
 
