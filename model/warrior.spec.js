@@ -49,7 +49,17 @@ describe('Warrior', function() {
 
     });
     
-    describe('#setWeapon', function() {
+    describe('#attackedBy', function() {
+
+        it('warrior attacked by another, its hp decreases by the attack point of the enemy minus its own defense point', function() {
+            var jon = new Warrior(30);
+            var theon = new Warrior(20);
+            jon.setWeapon('dagger');
+            theon.setWeapon('dagger');
+            jon.attack(theon);
+
+            expect(theon.getHP()).to.eql(19);
+        });
 
         it('given a dagger to a warrior, its attack value will be subtrackted from the enemy\'s hp when attacking', function() {
             var jon = new Warrior(30);
@@ -108,5 +118,32 @@ describe('Warrior', function() {
         });
 
     });
+    
+    describe('#setWeapon', function() {
+        
+        it('not setting a weapon will leave the warrior with barehand', function() {
+            var jon = new Warrior(30);
+            var theon = new Warrior(20);
+
+            expect(jon._weapon).to.eql('barehand');
+        });
+        
+        it('setting an existing weapon will give it to the warrior', function() {
+            var jon = new Warrior(30);
+            var theon = new Warrior(20);
+            jon.setWeapon('sword');
+
+            expect(jon._weapon).to.eql('sword');
+        });
+        
+        it('setting a not-existing weapon will leave the warrior with barehand', function() {
+            var jon = new Warrior(30);
+            var theon = new Warrior(20);
+            jon.setWeapon('tiger');
+
+            expect(jon._weapon).to.eql('barehand');
+        });
+        
+    });    
 
 });
