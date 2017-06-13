@@ -3,18 +3,18 @@
 module.exports = {
     'barehand': {
         'attack': 1,
-        'defend': 0
+        'defense': 0
     },
     'sword': {
         'attack': 7,
-        'defend': 2
+        'defense': 2
     },
     'dagger': {
         'attack': 5,
-        'defend': 4
+        'defense': 4
     },
     'magic_stick': {
         'attack': 8,
-        'defend': 1
+        'defense': 1
     }
 };

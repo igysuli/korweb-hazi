@@ -1,4 +1,21 @@
-var Weapons = require('./weapons.js');
+var Weapons = {
+    'barehand': {
+        'attack': 1,
+        'defense': 0
+    },
+    'sword': {
+        'attack': 7,
+        'defense': 2
+    },
+    'dagger': {
+        'attack': 5,
+        'defense': 4
+    },
+    'magic_stick': {
+        'attack': 8,
+        'defense': 1
+    }
+};
 var Warrior = require('./warrior.js');
 var expect = require('chai').expect;
 
@@ -40,7 +57,7 @@ describe('Warrior', function() {
             jon.setWeapon('dagger');
             jon.attack(theon);
 
-            expect(theon.getHP()).to.eql(20 - Weapons['dagger'].attack);
+            expect(theon.getHP()).to.eql(15);
         });
         
         it('given a sword to a warrior, its attack value will be subtrackted from the enemy\'s hp when attacking', function() {
@@ -49,7 +66,7 @@ describe('Warrior', function() {
             jon.setWeapon('sword');
             jon.attack(theon);
 
-            expect(theon.getHP()).to.eql(20 - Weapons['sword'].attack);
+            expect(theon.getHP()).to.eql(13);
         });
         
         it('given a magic_stick to a warrior, its attack value will be subtrackted from the enemy\'s hp when attacking', function() {
@@ -58,7 +75,7 @@ describe('Warrior', function() {
             jon.setWeapon('magic_stick');
             jon.attack(theon);
 
-            expect(theon.getHP()).to.eql(20 - Weapons['magic_stick'].attack);
+            expect(theon.getHP()).to.eql(12);
         });
         
         it('given a not existing weapon (in the system) to a warrior, the original 1 value will be subtrackted from the enemy\'s hp when attacking', function() {
@@ -68,6 +85,26 @@ describe('Warrior', function() {
             jon.attack(theon);
 
             expect(theon.getHP()).to.eql(19);
+        });
+        
+        it('when attacking with sword someone holding a sword, the damage should be less by the defense point of the sword', function() {
+            var jon = new Warrior(30);
+            var theon = new Warrior(20);
+            jon.setWeapon('sword');
+            theon.setWeapon('sword');
+            jon.attack(theon);
+
+            expect(theon.getHP()).to.eql(15);
+        });
+        
+        it('when attacking with sword someone holding a magic stick, the damage should be less by the defense point of the magic stick', function() {
+            var jon = new Warrior(30);
+            var theon = new Warrior(20);
+            jon.setWeapon('sword');
+            theon.setWeapon('magic_stick');
+            jon.attack(theon);
+
+            expect(theon.getHP()).to.eql(14);
         });
 
     });
