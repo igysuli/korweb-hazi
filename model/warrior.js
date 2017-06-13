@@ -19,6 +19,10 @@ Warrior.prototype = {
         return this._weapon;
     },
     
+    isAlive: function() {
+        return this._hp > 0;
+    },
+    
     attack: function(anotherWarrior) {
         anotherWarrior.attackedBy(this._weapon);
     },
