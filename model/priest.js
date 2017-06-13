@@ -5,6 +5,7 @@ var Warrior = require('./warrior.js');
 
 function Priest() {
     Priest.super_.apply(this, arguments);
+    this._type = 'priest';
 }
 
 Priest.super_ = Warrior;

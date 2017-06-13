@@ -4,6 +4,7 @@ var Weapons = require('./weapons.js');
 
 function Warrior(hp)
 {
+    this._type = 'warrior';
     this._hp = parseInt(hp) > 30 ? 30 : parseInt(hp);
     this._originalHP = this._hp;
     this._weapon = 'barehand';
@@ -35,6 +36,18 @@ Warrior.prototype = {
         if (Weapons[weapon] != undefined) {
             this._weapon = weapon;
         }
+    },
+    
+    getType: function() {
+        return this._type;
+    },
+    
+    setID: function(id) {
+        this._id = id;
+    },
+    
+    getID: function() {
+        return this._id == undefined ? '' : this._id;
     }
 };
 

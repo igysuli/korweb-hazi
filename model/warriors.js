@@ -12,32 +12,45 @@ function Warriors()
 Warriors.prototype = {
     
     addWarrior: function(type, hp, weapon) {
-        var warrior = this.createWarrior(type, hp, weapon);
         var id = this.getNewID();
-        this.pushWarriorToList(id, type, warrior);
+        var warrior = this.createWarrior(type, hp, weapon, id);
+        this.pushWarriorToList(warrior);
         return id;
+    },
+    
+    getWarriorByID: function(id) {
+        var warrior = undefined;
+        var i = 0;
+        while (warrior == undefined && i < this._warriors.length) {
+            if (this._warriors[i].getID() == id) {
+                warrior = this._warriors[i];
+            }
+            i++;
+        }
+        return warrior;
     },
     
     getWarriors: function() {
         var output = [];
         for (var i in this._warriors) {
             output.push({
-                id: this._warriors[i].id,
-                type: this._warriors[i].type,
-                hp: this._warriors[i].warrior.getHP(),
-                weapon: this._warriors[i].warrior.getWeapon()
+                id: this._warriors[i].getID(),
+                type: this._warriors[i].getType(),
+                hp: this._warriors[i].getHP(),
+                weapon: this._warriors[i].getWeapon()
             });
         }
         return output;
     },
     
-    createWarrior: function(type, hp, weapon) {
+    createWarrior: function(type, hp, weapon, id) {
         if (type == 'priest') {
             var warrior = new Priest(hp);
         } else {
             var warrior = new Warrior(hp);
         }
         warrior.setWeapon(weapon);
+        warrior.setID(id);
         return warrior;
     },
     
@@ -45,12 +58,8 @@ Warriors.prototype = {
         return this._lastID++;
     },
     
-    pushWarriorToList: function(id, type, warrior) {
-        this._warriors.push({
-            'id': id,
-            'type': type,
-            'warrior': warrior
-        });
+    pushWarriorToList: function(warrior) {
+        this._warriors.push(warrior);
     }
 };
 

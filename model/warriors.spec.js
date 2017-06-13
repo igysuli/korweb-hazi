@@ -49,5 +49,24 @@ describe('Warriors', function() {
         });
         
     });
+    
+    describe('#getWarriorByID', function() {
+        
+        it('given 3 newly added warriors: asking for the one with id 2 will return it', function() {
+            var warriors = new Warriors();
+            warriors.addWarrior('warrior', 10, 'magic_stick');
+            warriors.addWarrior('priest', 20, 'dagger');
+            warriors.addWarrior('priest', 30, 'sword');
+
+            expect(JSON.stringify(warriors.getWarriorByID(2))).to.eql(JSON.stringify({
+               '_type': 'priest',
+               '_hp': 20,
+                '_originalHP': 20,
+                '_weapon': 'dagger',
+                '_id': 2
+            }));
+        });
+        
+    });
 
 });
