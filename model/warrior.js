@@ -19,7 +19,7 @@ Warrior.prototype = {
     },
     
     attackedBy: function(weapon) {
-        this._hp -= Weapons[weapon];
+        this._hp -= Weapons[weapon].attack;
     },
     
     setWeapon: function(weapon) {

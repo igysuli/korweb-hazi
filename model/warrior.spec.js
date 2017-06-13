@@ -40,7 +40,7 @@ describe('Warrior', function() {
             jon.setWeapon('dagger');
             jon.attack(theon);
 
-            expect(theon.getHP()).to.eql(20 - Weapons['dagger']);
+            expect(theon.getHP()).to.eql(20 - Weapons['dagger'].attack);
         });
         
         it('given a sword to a warrior, its attack value will be subtrackted from the enemy\'s hp when attacking', function() {
@@ -49,7 +49,7 @@ describe('Warrior', function() {
             jon.setWeapon('sword');
             jon.attack(theon);
 
-            expect(theon.getHP()).to.eql(20 - Weapons['sword']);
+            expect(theon.getHP()).to.eql(20 - Weapons['sword'].attack);
         });
         
         it('given a magic_stick to a warrior, its attack value will be subtrackted from the enemy\'s hp when attacking', function() {
@@ -58,7 +58,7 @@ describe('Warrior', function() {
             jon.setWeapon('magic_stick');
             jon.attack(theon);
 
-            expect(theon.getHP()).to.eql(20 - Weapons['magic_stick']);
+            expect(theon.getHP()).to.eql(20 - Weapons['magic_stick'].attack);
         });
         
         it('given a not existing weapon (in the system) to a warrior, the original 1 value will be subtrackted from the enemy\'s hp when attacking', function() {
